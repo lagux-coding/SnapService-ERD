@@ -1,0 +1,927 @@
+{
+  "tables": {
+    "categories": {
+      "name": "categories",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "orders": {
+      "name": "orders",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "total": {
+          "name": "total",
+          "type": "float8",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "shipping_price": {
+          "name": "shipping_price",
+          "type": "float8",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "address": {
+          "name": "address",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "supplier_id": {
+          "name": "supplier_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "paid_at": {
+          "name": "paid_at",
+          "type": "timestamp",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "deliveried_at": {
+          "name": "deliveried_at",
+          "type": "timestamp",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "orders_detail": {
+      "name": "orders_detail",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "order_id": {
+          "name": "order_id",
+          "type": "uuid",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "product_attribute_id": {
+          "name": "product_attribute_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "price": {
+          "name": "price",
+          "type": "float8",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "discount_percent": {
+          "name": "discount_percent",
+          "type": "float8",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "status": {
+          "name": "status",
+          "type": "publicorder_status",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "product_attribute": {
+      "name": "product_attribute",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "product_id": {
+          "name": "product_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "price": {
+          "name": "price",
+          "type": "float8",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "product_images": {
+      "name": "product_images",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "product_image_url": {
+          "name": "product_image_url",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "products_id": {
+          "name": "products_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "product_reviews": {
+      "name": "product_reviews",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "product_id": {
+          "name": "product_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "rating": {
+          "name": "rating",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "products": {
+      "name": "products",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "price": {
+          "name": "price",
+          "type": "float8",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "stock_in_quantity": {
+          "name": "stock_in_quantity",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "rating_average": {
+          "name": "rating_average",
+          "type": "float8",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "sku": {
+          "name": "sku",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "discount_price": {
+          "name": "discount_price",
+          "type": "float8",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "discount_percent": {
+          "name": "discount_percent",
+          "type": "float8",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "sold_quantity": {
+          "name": "sold_quantity",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "available_quantity": {
+          "name": "available_quantity",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "is_active": {
+          "name": "is_active",
+          "type": "bool",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "is_sale": {
+          "name": "is_sale",
+          "type": "bool",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "categories_id": {
+          "name": "categories_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "supplier_id": {
+          "name": "supplier_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {
+        "products_name_index": {
+          "name": "products_name_index",
+          "unique": false,
+          "columns": [
+            "name"
+          ],
+          "type": "btree"
+        }
+      },
+      "constraints": {
+        "fk_products_categories": {
+          "type": "FOREIGN KEY",
+          "name": "fk_products_categories",
+          "columnName": "categories_id",
+          "targetTableName": "categories",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        },
+        "fk_products_suppliers": {
+          "type": "FOREIGN KEY",
+          "name": "fk_products_suppliers",
+          "columnName": "supplier_id",
+          "targetTableName": "suppliers",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
+    },
+    "suppliers": {
+      "name": "suppliers",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "registered_at": {
+          "name": "registered_at",
+          "type": "timestamp",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "is_verified": {
+          "name": "is_verified",
+          "type": "bool",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "users": {
+      "name": "users",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "phone": {
+          "name": "phone",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "address": {
+          "name": "address",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "is_active": {
+          "name": "is_active",
+          "type": "bool",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "full_name": {
+          "name": "full_name",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    }
+  },
+  "relationships": {
+    "fk_orders_detail_order": {
+      "name": "fk_orders_detail_order",
+      "primaryTableName": "orders",
+      "primaryColumnName": "id",
+      "foreignTableName": "orders_detail",
+      "foreignColumnName": "order_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_orders_detail_product": {
+      "name": "fk_orders_detail_product",
+      "primaryTableName": "product_attribute",
+      "primaryColumnName": "id",
+      "foreignTableName": "orders_detail",
+      "foreignColumnName": "product_attribute_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_orders_supplier": {
+      "name": "fk_orders_supplier",
+      "primaryTableName": "suppliers",
+      "primaryColumnName": "id",
+      "foreignTableName": "orders",
+      "foreignColumnName": "supplier_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_orders_user": {
+      "name": "fk_orders_user",
+      "primaryTableName": "users",
+      "primaryColumnName": "id",
+      "foreignTableName": "orders",
+      "foreignColumnName": "user_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_product_attribute_product": {
+      "name": "fk_product_attribute_product",
+      "primaryTableName": "products",
+      "primaryColumnName": "id",
+      "foreignTableName": "product_attribute",
+      "foreignColumnName": "product_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_product_images_products": {
+      "name": "fk_product_images_products",
+      "primaryTableName": "products",
+      "primaryColumnName": "id",
+      "foreignTableName": "product_images",
+      "foreignColumnName": "products_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_product_reviews_product": {
+      "name": "fk_product_reviews_product",
+      "primaryTableName": "products",
+      "primaryColumnName": "id",
+      "foreignTableName": "product_reviews",
+      "foreignColumnName": "product_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_product_reviews_user": {
+      "name": "fk_product_reviews_user",
+      "primaryTableName": "users",
+      "primaryColumnName": "id",
+      "foreignTableName": "product_reviews",
+      "foreignColumnName": "user_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_products_categories": {
+      "name": "fk_products_categories",
+      "primaryTableName": "categories",
+      "primaryColumnName": "id",
+      "foreignTableName": "products",
+      "foreignColumnName": "categories_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_products_suppliers": {
+      "name": "fk_products_suppliers",
+      "primaryTableName": "suppliers",
+      "primaryColumnName": "id",
+      "foreignTableName": "products",
+      "foreignColumnName": "supplier_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_suppliers_user": {
+      "name": "fk_suppliers_user",
+      "primaryTableName": "users",
+      "primaryColumnName": "id",
+      "foreignTableName": "suppliers",
+      "foreignColumnName": "user_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    }
+  },
+  "tableGroups": {}
+}
