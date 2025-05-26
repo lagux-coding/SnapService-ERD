@@ -73,7 +73,7 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "timestamptz",
           "default": null,
           "check": null,
           "primary": false,
@@ -123,7 +123,7 @@
         },
         "paid_at": {
           "name": "paid_at",
-          "type": "timestamp",
+          "type": "timestamptz",
           "default": null,
           "check": null,
           "primary": false,
@@ -133,7 +133,7 @@
         },
         "deliveried_at": {
           "name": "deliveried_at",
-          "type": "timestamp",
+          "type": "timestamptz",
           "default": null,
           "check": null,
           "primary": false,
@@ -151,26 +151,6 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "int4",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "comment": null
-        },
-        "order_id": {
-          "name": "order_id",
-          "type": "uuid",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "comment": null
-        },
-        "product_attribute_id": {
-          "name": "product_attribute_id",
           "type": "int4",
           "default": null,
           "check": null,
@@ -216,12 +196,42 @@
           "check": null,
           "primary": false,
           "unique": false,
-          "notNull": true,
+          "notNull": false,
           "comment": null
         },
         "note": {
           "name": "note",
           "type": "text",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "order_id": {
+          "name": "order_id",
+          "type": "uuid",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "product_id": {
+          "name": "product_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "product_attribute_id": {
+          "name": "product_attribute_id",
+          "type": "int4",
           "default": null,
           "check": null,
           "primary": false,
@@ -747,7 +757,7 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "timestamptz",
           "default": null,
           "check": null,
           "primary": false,
@@ -782,7 +792,7 @@
           "check": null,
           "primary": false,
           "unique": false,
-          "notNull": true,
+          "notNull": false,
           "comment": null
         },
         "is_active": {
@@ -812,8 +822,8 @@
     }
   },
   "relationships": {
-    "fk_orders_detail_order": {
-      "name": "fk_orders_detail_order",
+    "fk_orderdetails_orders": {
+      "name": "fk_orderdetails_orders",
       "primaryTableName": "orders",
       "primaryColumnName": "id",
       "foreignTableName": "orders_detail",
@@ -822,8 +832,18 @@
       "updateConstraint": "NO_ACTION",
       "deleteConstraint": "NO_ACTION"
     },
-    "fk_orders_detail_product": {
-      "name": "fk_orders_detail_product",
+    "fk_orderdetails_products": {
+      "name": "fk_orderdetails_products",
+      "primaryTableName": "products",
+      "primaryColumnName": "id",
+      "foreignTableName": "orders_detail",
+      "foreignColumnName": "product_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "fk_orderdetails_products_attribute": {
+      "name": "fk_orderdetails_products_attribute",
       "primaryTableName": "product_attribute",
       "primaryColumnName": "id",
       "foreignTableName": "orders_detail",
