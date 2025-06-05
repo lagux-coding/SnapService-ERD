@@ -1,5 +1,33 @@
 {
   "tables": {
+    "__EFMigrationsHistory": {
+      "name": "__EFMigrationsHistory",
+      "columns": {
+        "MigrationId": {
+          "name": "MigrationId",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "ProductVersion": {
+          "name": "ProductVersion",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
     "categories": {
       "name": "categories",
       "columns": {
@@ -228,16 +256,6 @@
           "unique": false,
           "notNull": true,
           "comment": null
-        },
-        "product_attribute_id": {
-          "name": "product_attribute_id",
-          "type": "int4",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "comment": null
         }
       },
       "comment": null,
@@ -334,11 +352,41 @@
           "unique": false,
           "notNull": true,
           "comment": null
+        },
+        "is_main": {
+          "name": "is_main",
+          "type": "bool",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
         }
       },
       "comment": null,
-      "indexes": {},
-      "constraints": {}
+      "indexes": {
+        "idx_product_images_productid_ismain": {
+          "name": "idx_product_images_productid_ismain",
+          "unique": false,
+          "columns": [
+            "products_id",
+            "is_main"
+          ],
+          "type": "btree"
+        }
+      },
+      "constraints": {
+        "fk_product_images_products": {
+          "type": "FOREIGN KEY",
+          "name": "fk_product_images_products",
+          "columnName": "products_id",
+          "targetTableName": "products",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     },
     "product_reviews": {
       "name": "product_reviews",
@@ -395,7 +443,7 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "timestamptz",
           "default": null,
           "check": null,
           "primary": false,
@@ -433,7 +481,7 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "timestamptz",
           "default": null,
           "check": null,
           "primary": false,
@@ -659,7 +707,7 @@
         },
         "registered_at": {
           "name": "registered_at",
-          "type": "timestamp",
+          "type": "timestamptz",
           "default": null,
           "check": null,
           "primary": false,
@@ -822,18 +870,8 @@
     }
   },
   "relationships": {
-    "fk_orderdetails_orders": {
-      "name": "fk_orderdetails_orders",
-      "primaryTableName": "orders",
-      "primaryColumnName": "id",
-      "foreignTableName": "orders_detail",
-      "foreignColumnName": "order_id",
-      "cardinality": "ONE_TO_MANY",
-      "updateConstraint": "NO_ACTION",
-      "deleteConstraint": "NO_ACTION"
-    },
-    "fk_orderdetails_products": {
-      "name": "fk_orderdetails_products",
+    "FK_orders_detail_products_product_id": {
+      "name": "FK_orders_detail_products_product_id",
       "primaryTableName": "products",
       "primaryColumnName": "id",
       "foreignTableName": "orders_detail",
@@ -842,12 +880,12 @@
       "updateConstraint": "NO_ACTION",
       "deleteConstraint": "NO_ACTION"
     },
-    "fk_orderdetails_products_attribute": {
-      "name": "fk_orderdetails_products_attribute",
-      "primaryTableName": "product_attribute",
+    "fk_orderdetails_orders": {
+      "name": "fk_orderdetails_orders",
+      "primaryTableName": "orders",
       "primaryColumnName": "id",
       "foreignTableName": "orders_detail",
-      "foreignColumnName": "product_attribute_id",
+      "foreignColumnName": "order_id",
       "cardinality": "ONE_TO_MANY",
       "updateConstraint": "NO_ACTION",
       "deleteConstraint": "NO_ACTION"
