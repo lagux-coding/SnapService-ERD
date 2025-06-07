@@ -979,6 +979,7 @@
       "cardinality": "ONE_TO_MANY",
       "updateConstraint": "NO_ACTION",
       "deleteConstraint": "NO_ACTION"
+      "nullable": false
     }
   },
   "tableGroups": {}
